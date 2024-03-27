@@ -57,7 +57,6 @@ const run = async () => {
             console.info(`Processing pool: ${account.pubkey} with ${poolSize.toFixed()} ${Token.WSOL.symbol} in liquidity`);
         }
     );
-
 }
 
 run()

@@ -9,7 +9,7 @@ describe('run function tests', () => {
         payer = Keypair.generate();
         toAccount = Keypair.generate();
 
-        const connection = new Connection('https://mainnet.helius-rpc.com/?api-key=62ab39d9-db50-4757-a99f-8f360b325ce3', 'confirmed');
+        const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
 
         let airdropSignature = await connection.requestAirdrop(
             payer.publicKey,
@@ -22,7 +22,7 @@ describe('run function tests', () => {
     it('benchmark send rpc transaction', async () => {
         console.time('RPC Transaction');
 
-        const connection = new Connection('https://mainnet.helius-rpc.com/?api-key=62ab39d9-db50-4757-a99f-8f360b325ce3', 'confirmed');
+        const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
 
         let recentBlockhash = await connection.getRecentBlockhash();
         console.log(recentBlockhash);
@@ -51,7 +51,7 @@ describe('run function tests', () => {
     it('benchmark send quic transaction', async () => {
         console.time('Quic Transaction');
 
-        const connection = new Connection('https://mainnet.helius-rpc.com/?api-key=62ab39d9-db50-4757-a99f-8f360b325ce3', 'confirmed');
+        const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
 
         let recentBlockhash = await connection.getRecentBlockhash();
 
@@ -71,7 +71,7 @@ describe('run function tests', () => {
 
         const a = manualTransaction.serialize();
 
-        const quic_client = SolanaFastClient.new('https://mainnet.helius-rpc.com/?api-key=62ab39d9-db50-4757-a99f-8f360b325ce3', ' wss://mainnet.helius-rpc.com/?api-key=62ab39d9-db50-4757-a99f-8f360b325ce3');
+        const quic_client = SolanaFastClient.new('http://127.0.0.1:8899', 'ws://127.0.0.1:8900');
         await quic_client.connect()
 
         const ret = await quic_client.sendTransaction(a)
